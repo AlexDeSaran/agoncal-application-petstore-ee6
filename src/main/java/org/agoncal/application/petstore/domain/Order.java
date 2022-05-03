@@ -1,5 +1,8 @@
 package org.agoncal.application.petstore.domain;
 
+import lombok.NonNull;
+import lombok.var;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
@@ -55,7 +58,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(Customer customer, CreditCard creditCard, Address deliveryAddress) {
+    public Order(@NonNull Customer customer, @NonNull CreditCard creditCard, @NonNull Address deliveryAddress) {
         this.customer = customer;
         this.creditCard = creditCard;
         this.deliveryAddress = deliveryAddress;
@@ -78,7 +81,7 @@ public class Order {
         if (orderLines == null || orderLines.isEmpty())
             return 0f;
 
-        Float total = 0f;
+        var total = 0f;
 
         // Sum up the quantities
         for (OrderLine orderLine : orderLines) {
@@ -175,14 +178,14 @@ public class Order {
 
     @Override
     public int hashCode() {
-        int result = orderDate != null ? orderDate.hashCode() : 0;
+        var result = orderDate != null ? orderDate.hashCode() : 0;
         result = 31 * result + customer.hashCode();
         return result;
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
+        final var sb = new StringBuilder();
         sb.append("Order");
         sb.append("{id=").append(id);
         sb.append(", orderDate=").append(orderDate);
