@@ -1,5 +1,7 @@
 package org.agoncal.application.petstore.domain;
 
+import lombok.NonNull;
+import lombok.var;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -60,7 +62,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, String description, Category category) {
+    public Product(@NonNull String name, @NonNull String description, @NonNull Category category) {
         this.name = name;
         this.description = description;
         this.category = category;
@@ -135,7 +137,7 @@ public class Product {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
+        final var sb = new StringBuilder();
         sb.append("Product");
         sb.append("{id=").append(id);
         sb.append(", name='").append(name).append('\'');
