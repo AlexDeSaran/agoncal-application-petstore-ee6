@@ -1,5 +1,7 @@
 package org.agoncal.application.petstore.domain;
 
+import lombok.NonNull;
+import lombok.var;
 import org.agoncal.application.petstore.constraint.NotEmpty;
 import org.agoncal.application.petstore.constraint.Price;
 
@@ -62,7 +64,7 @@ public class Item {
     public Item() {
     }
 
-    public Item(String name, Float unitCost, String imagePath, Product product, String description) {
+    public Item(@NonNull String name, @NonNull Float unitCost, @NonNull String imagePath, @NonNull Product product, @NonNull String description) {
         this.name = name;
         this.unitCost = unitCost;
         this.imagePath = imagePath;
@@ -137,14 +139,14 @@ public class Item {
 
     @Override
     public int hashCode() {
-        int result = name.hashCode();
+        var result = name.hashCode();
         result = 31 * result + imagePath.hashCode();
         return result;
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
+        final var sb = new StringBuilder();
         sb.append("Item");
         sb.append("{id=").append(id);
         sb.append(", name='").append(name).append('\'');
