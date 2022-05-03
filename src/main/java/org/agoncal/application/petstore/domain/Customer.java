@@ -1,5 +1,7 @@
 package org.agoncal.application.petstore.domain;
 
+import lombok.NonNull;
+import lombok.var;
 import org.agoncal.application.petstore.constraint.Email;
 import org.agoncal.application.petstore.constraint.Login;
 import org.agoncal.application.petstore.exception.ValidationException;
@@ -78,7 +80,7 @@ public class Customer implements Serializable {
     public Customer() {
     }
 
-    public Customer(String firstname, String lastname, String login, String password, String email, Address address) {
+    public Customer(@NonNull String firstname, @NonNull String lastname, @NonNull String login, @NonNull String password, @NonNull String email, @NonNull Address address) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.login = login;
@@ -108,7 +110,7 @@ public class Customer implements Serializable {
         birth.setTime(dateOfBirth);
         Calendar now = new GregorianCalendar();
         now.setTime(new Date());
-        int adjust = 0;
+        var adjust = 0;
         if (now.get(Calendar.DAY_OF_YEAR) - birth.get(Calendar.DAY_OF_YEAR) < 0) {
             adjust = -1;
         }
@@ -235,7 +237,7 @@ public class Customer implements Serializable {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
+        final var sb = new StringBuilder();
         sb.append("Customer");
         sb.append("{id=").append(id);
         sb.append(", login='").append(login).append('\'');
