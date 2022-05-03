@@ -1,5 +1,7 @@
 package org.agoncal.application.petstore.domain;
 
+import lombok.NonNull;
+import lombok.var;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
@@ -40,7 +42,7 @@ public class CreditCard {
     public CreditCard() {
     }
 
-    public CreditCard(String creditCardNumber, CreditCardType creditCardType, String creditCardExpDate) {
+    public CreditCard(@NonNull String creditCardNumber, @NonNull CreditCardType creditCardType, @NonNull String creditCardExpDate) {
         this.creditCardNumber = creditCardNumber;
         this.creditCardType = creditCardType;
         this.creditCardExpDate = creditCardExpDate;
@@ -97,7 +99,7 @@ public class CreditCard {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
+        final var sb = new StringBuilder();
         sb.append("CreditCard");
         sb.append("{creditCardNumber='").append(creditCardNumber).append('\'');
         sb.append(", creditCardType=").append(creditCardType);
