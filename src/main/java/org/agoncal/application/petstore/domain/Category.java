@@ -1,5 +1,7 @@
 package org.agoncal.application.petstore.domain;
 
+import lombok.NonNull;
+import lombok.var;
 import org.agoncal.application.petstore.constraint.NotEmpty;
 
 import javax.persistence.*;
@@ -59,7 +61,7 @@ public class Category {
     public Category() {
     }
 
-    public Category(String name, String description) {
+    public Category(@NonNull String name, @NonNull String description) {
         this.name = name;
         this.description = description;
     }
@@ -125,7 +127,7 @@ public class Category {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
+        final var sb = new StringBuilder();
         sb.append("Category");
         sb.append("{id=").append(id);
         sb.append(", name='").append(name).append('\'');
